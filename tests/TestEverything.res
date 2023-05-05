@@ -1,0 +1,2 @@
+DemoTest.run()
+RandomTest.run()

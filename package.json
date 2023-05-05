@@ -1,0 +1,19 @@
+{
+  "name": "rescript-project-template",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world",
+    "start": "bsb -make-world -w",
+    "test": "node tests/TestEverything.bs.js"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/code-frame": "^7.10.4",
+    "bs-platform": "*"
+  }
+}
