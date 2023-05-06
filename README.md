@@ -1,21 +1,26 @@
-# ReScript Project Template
+# [Advent of code 2022](https://adventofcode.com/2022)
+
+this repo is a rescript solution for AOC 2022.
+used with :
+
+## ReScript Project Template
 
 The only official ReScript starter template.
 
 ## Installation
 
 ```sh
-npm install
+yarn install
 ```
 
 ## Build
 
-- Build: `npm run res:build`
-- Clean: `npm run res:clean`
-- Build & watch: `npm run res:dev`
+-   Build: `yarn res:build`
+-   Clean: `yarn res:clean`
+-   Build & watch: `yarn res:dev`
 
 ## Run
 
 ```sh
-node src/Demo.bs.js
+node src/index.bs.js
 ```
