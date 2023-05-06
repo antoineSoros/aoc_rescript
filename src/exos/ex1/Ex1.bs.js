@@ -3,6 +3,7 @@
 
 var ReadFile = require("../../util/ReadFile.bs.js");
 var Belt_Array = require("rescript/lib/js/belt_Array.js");
+var LogSolution = require("../../util/LogSolution.bs.js");
 var Belt_SortArray = require("rescript/lib/js/belt_SortArray.js");
 
 var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/input1.txt").trim().split("\n\n"), (function (elf) {
@@ -21,7 +22,10 @@ function solution1(param) {
             return value;
           }
         }));
-  console.log("Solution exo 1.1 = " + first.toString() + "");
+  LogSolution.make("1.1", first);
+}
+
+function solution2(param) {
   var second = Belt_Array.reduce(Belt_Array.slice(Belt_SortArray.stableSortBy(Belt_Array.map(fileToArray, (function (t) {
                       return t | 0;
                     })), (function (a, b) {
@@ -29,9 +33,10 @@ function solution1(param) {
                 })), 0, 3), 0, (function (acc, value) {
           return acc + value | 0;
         }));
-  console.log("Solution exo 1.2 = ", second);
+  LogSolution.make("1.2", second);
 }
 
 exports.fileToArray = fileToArray;
 exports.solution1 = solution1;
+exports.solution2 = solution2;
 /* fileToArray Not a pure module */
