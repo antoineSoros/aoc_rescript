@@ -7,8 +7,6 @@ var Caml_array = require("rescript/lib/js/caml_array.js");
 var Belt_Option = require("rescript/lib/js/belt_Option.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 
-var fileToArray = ReadFile.fileToString("./src/exos/ex3/input3.txt");
-
 var alphaUp = Belt_Array.map(Belt_Array.map(Belt_Array.range(0, 25), (function (i) {
             return i + 65 | 0;
           })), (function (i) {
@@ -36,7 +34,7 @@ function countValue($$char) {
   }
 }
 
-function solution1(param) {
+function solution1(fileToArray) {
   var ruckSacks = Belt_Array.map(fileToArray.trim().split("\n"), (function (s) {
           var length = s.length;
           var part1 = s.slice(0, length / 2 | 0);
@@ -46,18 +44,17 @@ function solution1(param) {
                   part2
                 ];
         }));
-  var sol = Belt_Array.reduce(Belt_Array.map(Belt_Array.map(ruckSacks, (function (ruck) {
-                  var arr1 = Caml_array.get(ruck, 0).split("");
-                  return Belt_Option.getWithDefault(Belt_Array.getBy(arr1, (function (ch) {
-                                    return Caml_array.get(ruck, 1).includes(ch);
-                                  })), "");
-                })), countValue), 0, (function (acc, sum) {
-          return acc + sum | 0;
-        }));
-  LogSolution.make("3.1", sol);
+  return Belt_Array.reduce(Belt_Array.map(Belt_Array.map(ruckSacks, (function (ruck) {
+                        var arr1 = Caml_array.get(ruck, 0).split("");
+                        return Belt_Option.getWithDefault(Belt_Array.getBy(arr1, (function (ch) {
+                                          return Caml_array.get(ruck, 1).includes(ch);
+                                        })), "");
+                      })), countValue), 0, (function (acc, sum) {
+                return acc + sum | 0;
+              }));
 }
 
-function solution2(param) {
+function solution2(fileToArray) {
   var stack = fileToArray.trim().split("\n");
   var i = 0;
   var newStack = [];
@@ -66,25 +63,32 @@ function solution2(param) {
     i = i + 3 | 0;
     newStack.push(array);
   };
-  var sol = Belt_Array.reduce(Belt_Array.map(Belt_Array.map(newStack, (function (ruck) {
-                  var arr1 = Caml_array.get(ruck, 0).split("");
-                  return Belt_Option.getWithDefault(Belt_Array.getBy(arr1, (function (ch) {
-                                    if (Caml_array.get(ruck, 1).includes(ch)) {
-                                      return Caml_array.get(ruck, 2).includes(ch);
-                                    } else {
-                                      return false;
-                                    }
-                                  })), "");
-                })), countValue), 0, (function (acc, sum) {
-          return acc + sum | 0;
-        }));
-  LogSolution.make("3.2", sol);
+  return Belt_Array.reduce(Belt_Array.map(Belt_Array.map(newStack, (function (ruck) {
+                        var arr1 = Caml_array.get(ruck, 0).split("");
+                        return Belt_Option.getWithDefault(Belt_Array.getBy(arr1, (function (ch) {
+                                          if (Caml_array.get(ruck, 1).includes(ch)) {
+                                            return Caml_array.get(ruck, 2).includes(ch);
+                                          } else {
+                                            return false;
+                                          }
+                                        })), "");
+                      })), countValue), 0, (function (acc, sum) {
+                return acc + sum | 0;
+              }));
 }
 
-exports.fileToArray = fileToArray;
+var fileToArray = ReadFile.fileToString("./src/exos/ex3/input3.txt");
+
+function make(param) {
+  LogSolution.make("3.1", solution1(fileToArray));
+  LogSolution.make("3.2", solution2(fileToArray));
+}
+
 exports.alphaUp = alphaUp;
 exports.alphaLow = alphaLow;
 exports.countValue = countValue;
 exports.solution1 = solution1;
 exports.solution2 = solution2;
-/* fileToArray Not a pure module */
+exports.fileToArray = fileToArray;
+exports.make = make;
+/* alphaUp Not a pure module */

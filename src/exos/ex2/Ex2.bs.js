@@ -6,8 +6,6 @@ var Belt_Array = require("rescript/lib/js/belt_Array.js");
 var Caml_array = require("rescript/lib/js/caml_array.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 
-var fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt");
-
 function stringToGagme(s) {
   switch (s) {
     case "A" :
@@ -127,7 +125,7 @@ function myPlay(games) {
   }
 }
 
-function makeArrayFromFile(param) {
+function makeArrayFromFile(fileToArray) {
   return Belt_Array.map(Belt_Array.map(fileToArray.trim().split("\n"), (function (s) {
                     return s.split(" ");
                   })), (function (s) {
@@ -135,25 +133,29 @@ function makeArrayFromFile(param) {
               }));
 }
 
-function solution1(param) {
-  var array = Belt_Array.reduce(makeArrayFromFile(undefined), 0, (function (acc, games) {
-          return acc + countScore(games) | 0;
-        }));
-  LogSolution.make("2.1", array);
+function solution1(fileToArray) {
+  return Belt_Array.reduce(makeArrayFromFile(fileToArray), 0, (function (acc, games) {
+                return acc + countScore(games) | 0;
+              }));
 }
 
-function solution2(param) {
-  var array = Belt_Array.reduce(Belt_Array.map(makeArrayFromFile(undefined), myPlay), 0, (function (acc, games) {
-          return acc + countScore(games) | 0;
-        }));
-  LogSolution.make("2.2", array);
+function solution2(fileToArray) {
+  return Belt_Array.reduce(Belt_Array.map(makeArrayFromFile(fileToArray), myPlay), 0, (function (acc, games) {
+                return acc + countScore(games) | 0;
+              }));
 }
 
-exports.fileToArray = fileToArray;
+function make(param) {
+  var fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt");
+  LogSolution.make("2.1", solution1(fileToArray));
+  LogSolution.make("2.2", solution2(fileToArray));
+}
+
 exports.stringToGagme = stringToGagme;
 exports.countScore = countScore;
 exports.myPlay = myPlay;
 exports.makeArrayFromFile = makeArrayFromFile;
 exports.solution1 = solution1;
 exports.solution2 = solution2;
-/* fileToArray Not a pure module */
+exports.make = make;
+/* ReadFile Not a pure module */

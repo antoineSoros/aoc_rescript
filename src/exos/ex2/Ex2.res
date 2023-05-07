@@ -1,4 +1,3 @@
-let fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt")
 type game = Rock | Paper | Scissors
 let stringToGagme = (s: string) => {
   switch s {
@@ -48,20 +47,23 @@ let myPlay = (games: array<game>) => {
   | (Scissors, Scissors) => [Scissors, Rock]
   }
 }
-let makeArrayFromFile = () =>
+let makeArrayFromFile = fileToArray =>
   fileToArray
   ->Js.String2.trim
   ->Js.String2.split("\n")
   ->Belt.Array.map(s => s->Js.String2.split(" "))
   ->Belt.Array.map(s => s->Belt.Array.map(stringToGagme))
-let solution1 = () => {
-  let array = makeArrayFromFile()->Belt.Array.reduce(0, (acc, games) => acc + countScore(games))
-  LogSolution.make("2.1", array)
+let solution1 = fileToArray => {
+  makeArrayFromFile(fileToArray)->Belt.Array.reduce(0, (acc, games) => acc + countScore(games))
 }
-let solution2 = () => {
-  let array =
-    makeArrayFromFile()
-    ->Belt.Array.map(myPlay)
-    ->Belt.Array.reduce(0, (acc, games) => acc + countScore(games))
-  LogSolution.make("2.2", array)
+let solution2 = fileToArray => {
+  makeArrayFromFile(fileToArray)
+  ->Belt.Array.map(myPlay)
+  ->Belt.Array.reduce(0, (acc, games) => acc + countScore(games))
+}
+
+let make = () => {
+  let fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt")
+  LogSolution.make("2.1", solution1(fileToArray))
+  LogSolution.make("2.2", solution2(fileToArray))
 }
