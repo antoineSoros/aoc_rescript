@@ -6,7 +6,7 @@ var Belt_Array = require("rescript/lib/js/belt_Array.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 var Belt_SortArray = require("rescript/lib/js/belt_SortArray.js");
 
-var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/input1.txt").trim().split("\n\n"), (function (elf) {
+var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/exos/ex1/input1.txt").trim().split("\n\n"), (function (elf) {
         return Belt_Array.reduce(Belt_Array.map(elf.split("\n"), (function (t) {
                           return Number(t);
                         })), 0, (function (sum, v) {

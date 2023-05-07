@@ -1,5 +1,5 @@
 let fileToArray =
-  ReadFile.fileToString("./src/input1.txt")
+  ReadFile.fileToString("./src/exos/ex1/input1.txt")
   ->Js.String2.trim
   ->Js.String2.split("\n\n")
   ->Belt.Array.map(elf =>

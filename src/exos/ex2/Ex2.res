@@ -1,4 +1,4 @@
-let fileToArray = ReadFile.fileToString("./src/input2.txt")
+let fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt")
 type game = Rock | Paper | Scissors
 let stringToGagme = (s: string) => {
   switch s {

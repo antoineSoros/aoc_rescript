@@ -1,4 +1,4 @@
-let fileToArray = ReadFile.fileToString("./src/input3.txt")
+let fileToArray = ReadFile.fileToString("./src/exos/ex3/input3.txt")
 
 let alphaUp =
   Belt.Array.range(0, 25)

@@ -6,7 +6,7 @@ var Belt_Array = require("rescript/lib/js/belt_Array.js");
 var Caml_array = require("rescript/lib/js/caml_array.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 
-var fileToArray = ReadFile.fileToString("./src/input2.txt");
+var fileToArray = ReadFile.fileToString("./src/exos/ex2/input2.txt");
 
 function stringToGagme(s) {
   switch (s) {

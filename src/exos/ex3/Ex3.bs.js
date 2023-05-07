@@ -7,7 +7,7 @@ var Caml_array = require("rescript/lib/js/caml_array.js");
 var Belt_Option = require("rescript/lib/js/belt_Option.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 
-var fileToArray = ReadFile.fileToString("./src/input3.txt");
+var fileToArray = ReadFile.fileToString("./src/exos/ex3/input3.txt");
 
 var alphaUp = Belt_Array.map(Belt_Array.map(Belt_Array.range(0, 25), (function (i) {
             return i + 65 | 0;
