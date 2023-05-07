@@ -3,6 +3,7 @@
 
 var Ex1 = require("./exos/ex1/Ex1.bs.js");
 var Ex2 = require("./exos/ex2/Ex2.bs.js");
+var Ex3 = require("./exos/ex3/Ex3.bs.js");
 
 Ex1.solution1(undefined);
 
@@ -11,5 +12,9 @@ Ex1.solution2(undefined);
 Ex2.solution1(undefined);
 
 Ex2.solution2(undefined);
+
+Ex3.solution1(undefined);
+
+Ex3.solution2(undefined);
 
 /*  Not a pure module */
