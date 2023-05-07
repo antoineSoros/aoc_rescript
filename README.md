@@ -22,5 +22,17 @@ yarn install
 ## Run
 
 ```sh
-node src/index.bs.js
+yarn exo
+```
+
+## Run unit tests
+
+```sh
+yarn test
+```
+
+or in watch mode
+
+```sh
+yarn test:watch
 ```
