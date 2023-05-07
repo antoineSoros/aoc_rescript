@@ -6,7 +6,27 @@ var Belt_Array = require("rescript/lib/js/belt_Array.js");
 var LogSolution = require("../../util/LogSolution.bs.js");
 var Belt_SortArray = require("rescript/lib/js/belt_SortArray.js");
 
-var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/input1.txt").trim().split("\n\n"), (function (elf) {
+function solution1(fileToArray) {
+  return Belt_Array.reduce(fileToArray, 0, (function (acc, value) {
+                if (acc > value) {
+                  return acc;
+                } else {
+                  return value;
+                }
+              }));
+}
+
+function solution2(fileToArray) {
+  return Belt_Array.reduce(Belt_Array.slice(Belt_SortArray.stableSortBy(Belt_Array.map(fileToArray, (function (t) {
+                            return t | 0;
+                          })), (function (a, b) {
+                        return b - a | 0;
+                      })), 0, 3), 0, (function (acc, value) {
+                return acc + value | 0;
+              }));
+}
+
+var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/exos/ex1/input1.txt").trim().split("\n\n"), (function (elf) {
         return Belt_Array.reduce(Belt_Array.map(elf.split("\n"), (function (t) {
                           return Number(t);
                         })), 0, (function (sum, v) {
@@ -14,29 +34,13 @@ var fileToArray = Belt_Array.map(ReadFile.fileToString("./src/input1.txt").trim(
                     }));
       }));
 
-function solution1(param) {
-  var first = Belt_Array.reduce(fileToArray, 0, (function (acc, value) {
-          if (acc > value) {
-            return acc;
-          } else {
-            return value;
-          }
-        }));
-  LogSolution.make("1.1", first);
+function make(param) {
+  LogSolution.make("1.1", solution1(fileToArray));
+  LogSolution.make("1.2", solution2(fileToArray));
 }
 
-function solution2(param) {
-  var second = Belt_Array.reduce(Belt_Array.slice(Belt_SortArray.stableSortBy(Belt_Array.map(fileToArray, (function (t) {
-                      return t | 0;
-                    })), (function (a, b) {
-                  return b - a | 0;
-                })), 0, 3), 0, (function (acc, value) {
-          return acc + value | 0;
-        }));
-  LogSolution.make("1.2", second);
-}
-
-exports.fileToArray = fileToArray;
 exports.solution1 = solution1;
 exports.solution2 = solution2;
+exports.fileToArray = fileToArray;
+exports.make = make;
 /* fileToArray Not a pure module */

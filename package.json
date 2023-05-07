@@ -1,17 +1,20 @@
 {
-  "name": "rescript-project-template",
-  "version": "0.0.1",
-  "scripts": {
-    "res:build": "rescript",
-    "res:clean": "rescript clean",
-    "res:dev": "rescript build -w"
-  },
-  "keywords": [
-    "rescript"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "rescript": "*"
-  }
+    "name": "rescript-project-template",
+    "version": "0.0.1",
+    "scripts": {
+        "res:build": "rescript",
+        "res:clean": "rescript clean",
+        "res:dev": "rescript build -w",
+        "exo": "node src/index.bs.js",
+        "test": "jest"
+    },
+    "keywords": [
+        "rescript"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "@glennsl/rescript-jest": "^0.9.2",
+        "rescript": "*"
+    }
 }
