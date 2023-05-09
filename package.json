@@ -6,7 +6,8 @@
         "res:clean": "rescript clean",
         "res:dev": "rescript build -w",
         "exo": "node src/index.bs.js",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "jest --watchAll"
     },
     "keywords": [
         "rescript"

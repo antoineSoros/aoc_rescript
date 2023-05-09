@@ -4,11 +4,14 @@
 var Ex1 = require("./exos/ex1/Ex1.bs.js");
 var Ex2 = require("./exos/ex2/Ex2.bs.js");
 var Ex3 = require("./exos/ex3/Ex3.bs.js");
+var Ex4 = require("./exos/ex4/Ex4.bs.js");
 
 Ex1.make(undefined);
 
 Ex2.make(undefined);
 
 Ex3.make(undefined);
+
+Ex4.make(undefined);
 
 /*  Not a pure module */
