@@ -40,6 +40,19 @@ let solution1 = fileToArray => {
     }
   })
 }
+let solution2 = fileToArray => {
+  let array = makeElfArrayFromFile(fileToArray)
+  array->Belt.Array.reduce(0, (acc, elfPair) => {
+    let intersect =
+      Belt.Set.Int.intersect(elfPair.elf1, elfPair.elf2)->Belt.Set.Int.toArray->Belt.Array.length
+    if intersect == 0 {
+      acc
+    } else {
+      acc + 1
+    }
+  })
+}
 let make = () => {
   LogSolution.make("4.1", solution1(fileToArray))
+  LogSolution.make("4.2", solution2(fileToArray))
 }
